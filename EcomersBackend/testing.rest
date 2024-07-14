@@ -1,0 +1,21 @@
+POST http://127.0.0.1:8000/auth/signup
+Content-Type: application/json
+
+{"username":"rest","password":"pas123"}
+
+###
+
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{"username":"rest","password":"pas123"}
+
+###
+
+GET http://localhost:8000/auth/test_token
+Content-Type: application/json
+Authorization: Token 7b853c9fb620df80aaefca5f0e3b7a12bb0c97c1
+
+{}
+
+###
