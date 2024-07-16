@@ -1,13 +1,16 @@
-import type { Config } from "tailwindcss"
 
-const config = {
+/** @type {import('tailwindcss').Config} */
+const { nextui } = require("@nextui-org/react");
+
+module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -25,9 +28,13 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "rgb(0, 102, 128)",
           foreground: "hsl(var(--primary-foreground))",
         },
+        pending: {
+          DEFAULT: "#F29339",
+        },
+
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -74,7 +81,9 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
-
-export default config
+  plugins: [
+    require("tailwindcss-animate"),
+    require("tailwind-scrollbar"),
+    nextui(),
+  ],
+};

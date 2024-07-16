@@ -65,4 +65,14 @@ from rest_framework.permissions import IsAuthenticated
 @authentication_classes([SessionAuthentication , TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def test(e):
-     return Response("passed for {}".format(e.user.username))
+     user = UserJson(instance=e.user)
+     return Response(data=user.data , status=status.HTTP_200_OK)
+
+
+
+@api_view(['POST'])
+@authentication_classes([SessionAuthentication, TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def logout(request):
+    request.user.auth_token.delete()
+    return Response(status=status.HTTP_200_OK)
