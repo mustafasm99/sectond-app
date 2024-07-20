@@ -9,7 +9,8 @@ import {Modal}                from "@/components/ui/modal"
 import {Button, ButtonGroup}  from "@nextui-org/button";
 import axios, { Axios }       from "axios";
 import { useState }           from "react";
-
+import Offiers                from "@/components/admin/offiers"
+import ProdectGrids from "./ProdectGrids";
 
 
 // React.FC to adntefiy the types 
@@ -40,7 +41,7 @@ export const  BaseHome:React.FC<modal> =({ title})=>{
                {
                     !loggingout ? (
                          <div>
-                              <header className="flex flex-center container my-5 main-header shadow-md p-5 mx-5">
+                              <header className="flex flex-center container my-5 main-header shadow-md p-5 mx-auto">
                                    <Button onClick={Logout}> 
                                         Log out
                                    </Button>
@@ -48,6 +49,9 @@ export const  BaseHome:React.FC<modal> =({ title})=>{
                               <Modal isOpen={open} onClose={onClose} description="Test Desc" title={title} >
                                    Children
                               </Modal>
+                              <Offiers />
+                              <ProdectGrids />
+                              
                          </div>
                     ) : (
                          <>
